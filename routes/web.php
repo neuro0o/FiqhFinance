@@ -57,7 +57,7 @@ Route::get('/dashboard', function () {
 // Middleware for authenticated users
 Route::middleware(['auth'])->group(function () {
 
-    // Module Notes
+    /*----------------- MODULE NOTE ROUTES -------------------*/
     Route::get('/module1/note', function () {
         return view('module 1.note');
     })->name('module1.note');
@@ -82,9 +82,7 @@ Route::middleware(['auth'])->group(function () {
         return view('module 6.note');
     })->name('module6.note');
 
-    
-
-    // Module MiniGames
+    /*----------------- MODULE MINIGAME ROUTES -------------------*/
     Route::get('/module1/minigame', function () {
         return view('module 1.minigame');
     })->name('module1.minigame');
@@ -109,7 +107,7 @@ Route::middleware(['auth'])->group(function () {
         return view('module 6.minigame');
     })->name('module6.minigame');
 
-    // Module Scores
+    /*----------------- MODULE SCORE ROUTES -------------------*/
     Route::get('/module1/score', function () {
         return view('module 1.score');
     })->name('module1.score');
@@ -134,3 +132,4 @@ Route::middleware(['auth'])->group(function () {
         return view('module 6.score');
     })->name('module6.score');
 });
+
