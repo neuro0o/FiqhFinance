@@ -49,6 +49,13 @@
     </div>
 @endsection
 
+<!-- FOOTER SECTION -->
+@section('footer')
+    
+@endsection
+
+<!-- PAGE SPECIFIC JS -->
 @section('page-js')
+    <!-- FIXME: Fix Sidebar Collapse Behavior -->
     <script src="{{ asset('js/sidebar.js') }}"></script>
 @endsection
