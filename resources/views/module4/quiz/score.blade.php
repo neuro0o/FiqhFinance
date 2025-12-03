@@ -18,22 +18,22 @@
             <a href="{{ route('module4.quiz.start') }}" class="btn btn-primary">Start Quiz</a>
         @else
             <div style="margin-top:1rem;">
-                <h2>Score: {{ $result['score'] }} / {{ $result['total'] }}</h2>
+                <h2><span>You Scored: {{ $result['score'] }} / {{ $result['total'] }}</span></h2>
 
                 @if($result['isNewBest'])
                     <p><strong>🎉 New Best Score!</strong> Your best for Module 4 is now {{ $result['bestScore'] }}.</p>
                 @else
-                    <p>Your best: {{ $result['bestScore'] }}</p>
+                    <h3><span>Your best: {{ $result['bestScore'] }}</span></h3>
                 @endif
 
                 @if(isset($result['badge']) && $result['badge'])
                     <div style="margin-top:1rem; padding:1rem; border-radius:8px; background:#f3f8ff;">
-                        <h3>Badge Earned: {{ $result['badge']['badgeName'] }}</h3>
+                        <h4>Badge Earned: {{ $result['badge']['badgeName'] }}</h4>
                         @if(!empty($result['badge']['badgeDesc']))
                             <p>{{ $result['badge']['badgeDesc'] }}</p>
                         @endif
                         @if(!empty($result['badge']['badgeIcon']))
-                            <img src="{{ asset('images/badges/' . $result['badge']['badgeIcon']) }}" alt="badge" style="max-width:120px;">
+                            <img src="{{ asset($result['badge']['badgeIcon']) }}" alt="badge" style="max-width:120px;">
                         @endif
                     </div>
                 @else

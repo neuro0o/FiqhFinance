@@ -23,9 +23,13 @@
         </div>
 
         @if ($nextIndex > $total)
-            <a href="{{ route('module4.quiz.finish') }}" class="next-btn">Finish</a>
+            <div class="feedback-button">
+                <a href="{{ route('module4.quiz.finish') }}" class="btn btn-primary next-btn">Finish</a>
+            </div>
         @else
-            <a href="{{ route('module4.quiz.show', $nextIndex) }}" class="next-btn">Next</a>
+        <div class="feedback-button">
+            <a href="{{ route('module4.quiz.show', $nextIndex) }}" class="btn btn-primary next-btn">Next</a>
+        </div>
         @endif
 
     </div>

@@ -1,4 +1,4 @@
-/* Containers */
+/*----------------- Containers -------------------*/
 .quiz-container,
 .quiz-feedback-container,
 .score-content {
@@ -6,24 +6,24 @@
     padding: 2rem;
 }
 
-/* Question Card */
+/*----------------- Question Card -------------------*/
 .question-card {
-    background: #2d4e7a;
-    color: white;
+    background: var(--color-primary);
+    color: var(--color-secondary);
     padding: 3rem 2rem;
-    border-radius: 25px;
+    border-radius: 3.5rem;
     text-align: center;
-    max-width: 700px;
+    max-width: 750px;
     margin: 3rem auto;
     position: relative;
 }
 
 .question-number {
     position: absolute;
-    top: -15px;
-    left: -15px;
-    background: #1c3555;
-    color: white;
+    top: 15px;
+    left: 15px;
+    background: var(--color-tertiary);
+    color: var(--color-primary);
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -31,34 +31,36 @@
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    font-size: var(--fs-md);
 }
 
 .question-text {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    margin-top: 5rem;
 }
 
-/* True/False Buttons */
+/*----------------- True/False Button -------------------*/
 .btn-true,
 .btn-false {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    font-size: 2rem;
+    font-size: var(--fs-lg);
     border: none;
     cursor: pointer;
-    margin: 0 1rem;
+    margin: 5rem 3rem 0rem 3rem;
     transition: transform 0.2s;
 }
 
 .btn-true {
     background: #4caf50;
-    color: white;
+    color: var(--color-secondary);
 }
 
 .btn-false {
     background: #ff4c4c;
-    color: white;
+    color: var(--color-secondary);
 }
 
 .btn-true:hover,
@@ -66,65 +68,169 @@
     transform: scale(1.1);
 }
 
-/* Feedback Card */
+/*----------------- Feedback Card -------------------*/
 .feedback-card {
-    max-width: 700px;
+    max-width: 750px;
     margin: 3rem auto;
     padding: 3rem;
     border-radius: 25px;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: var(--fs-md);
+    color: var(--color-primary);
+    font-weight: var(--fw-bold);
 }
 
 .feedback-card.correct {
-    background: #a4e8a3;
-    color: #1c3555;
+    background: rgba(34, 197, 94, 0.5);
+    color: var(--color-primary);
 }
 
 .feedback-card.wrong {
-    background: #ffb3b3;
-    color: #1c3555;
+    background: rgba(239, 68, 68, 0.5);
+    color: var(--color-primary);
 }
 
-/* Next Button */
-.next-btn {
-    display: inline-block;
-    margin-top: 2rem;
-    background: #1c3555;
-    color: white;
-    padding: 0.75rem 2rem;
-    border-radius: 15px;
-    text-decoration: none;
-    transition: background 0.2s;
+.feedback-button {
+    text-align: center; /* center child elements */
+    margin-top: 2rem; /*spacing from note content */
 }
 
-.next-btn:hover {
-    background: #15263e;
+
+/*----------------- Score Page -------------------*/
+/* .score-content h2,
+.score-content p {
+    text-align: center;
+} */
+
+.score-content {
+    margin-left: 270px;
+    padding: 4rem 2rem;
 }
 
-/* Score Page */
-.score-content h1, .score-content h2, .score-content p {
+.score-content h1 {
+    color: var(--color-primary);
+    margin-bottom: 2.5rem;
+}
+
+.score-content h2 {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    color: var(--color-primary);
     text-align: center;
 }
 
-/* Responsive */
+.score-content h2 span {
+    background-color: rgba(34, 197, 94, 0.5);
+    border-radius: 5rem;
+    padding: 0.5rem 1.5rem;
+}
+
+.score-content h3 {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    color: var(--color-secondary);
+    text-align: center;
+}
+
+.score-content h3 span {
+    background-color: var(--color-primary);
+    border-radius: 5rem;
+    padding: 0.5rem 1.5rem;
+}
+
+.score-content h4 {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    color: var(--color-primary);
+    text-align: center;
+}
+
+/* FIXME: im not sure abt this style */
+/* "New Badge Unlocked!" */
+.score-content h3 {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    margin-top: 1.5rem;
+}
+
+/* Badge Card */
+.score-content .badge-card,
+.score-content > div[style*="background"] {
+    background: #2c4870 !important;
+    color: white !important;
+    max-width: 350px;
+    margin: 2rem auto;
+    padding: 2rem 1.5rem;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+/* Badge Icon */
+.score-content img {
+    width: 90px;
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+.score-content a.btn-primary,
+.score-content a.btn-secondary {
+    display: inline-block;
+    margin: 1rem 0.5rem 0 0.5rem;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: var(--fs-md);
+}
+
+.score-content a.btn-primary {
+    background: var(--color-primary);
+    color: white;
+}
+
+.score-content a.btn-secondary {
+    background: #d9d9d9;
+    color: black;
+}
+
+
+/*----------------- Responsive -------------------*/
 @media (max-width: 768px) {
     .quiz-container,
     .quiz-feedback-container,
     .score-content {
         margin-left: 0;
-        padding: 1rem;
+        padding: 1.5rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: var(--fs-xl);
     }
 
     .question-card,
     .feedback-card {
         padding: 2rem 1rem;
+        width: 90%;
+    }
+
+    .question-number {
+        width: 35px;
+        height: 35px;
+        font-size: var(--fs-md);
     }
 
     .btn-true, .btn-false {
         width: 60px;
         height: 60px;
         font-size: 1.5rem;
-        margin: 0 0.5rem;
+        margin: 1rem;
     }
+}
+
+@media (max-width: 426px) {
+  .quiz-container,
+  .quiz-feedback-container,
+  .score-content {
+      padding: 1rem;
+  }
 }
