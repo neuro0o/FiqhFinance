@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\ModuleAttempt;
 use App\Models\BestScore;
 use App\Models\Badge;
+use App\Models\UserBadge;
+
 
 class Module4QuizController extends Controller
 {
@@ -186,7 +188,7 @@ class Module4QuizController extends Controller
         // Check for badge eligibility (7/10 or higher)
         $badge = null;
         if ($score >= 7) {
-            $badgeData = Badge::where('badgeName', 'Takaful Team Player', 'images/badges/takaful_team_player.png')->first();
+            $badgeData = Badge::where('badgeName', 'Takaful Team Player')->first();
             
             if ($badgeData) {
                 $badge = [
@@ -194,6 +196,15 @@ class Module4QuizController extends Controller
                     'badgeDesc' => $badgeData->badgeDesc ?? '',
                     'badgeIcon' => $badgeData->badgeIcon ?? '',
                 ];
+
+                // Save to user_badges if not already earned
+                \DB::table('user_badges')->updateOrInsert(
+                    [
+                        'userID' => $userID,
+                        'badgeID' => $badgeData->badgeID
+                    ],
+                    ['earned_at' => now()]
+                );
             }
         }
 
