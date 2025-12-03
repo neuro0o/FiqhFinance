@@ -1,6 +1,7 @@
 .main-content {
   padding-top: 0;
   margin-top: 0;
+  margin-left: 250px;
 }
 
 
@@ -338,6 +339,10 @@ input:checked + .slider:before {
 
 /* ------------------ Responsive ------------------ */
 @media (max-width: 768px) {
+.main-content {
+  margin-left: 0rem;
+}
+
   .account-card {
     width: 90%;
   }
@@ -348,6 +353,10 @@ input:checked + .slider:before {
 }
 
 @media (max-width: 376px) {
+  .main-content {
+    margin-left: 0rem;
+  }
+
   .account-card {
     width: 80%;
     padding: 1rem 2rem;

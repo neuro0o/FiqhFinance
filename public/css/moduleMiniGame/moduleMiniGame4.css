@@ -1,0 +1,17 @@
+.minigame-content {
+  margin-left: 250px; /* same as sidebar width */
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .minigame-content {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 426px) {
+  .minigame-content {
+    margin-left: 0;
+  }
+}

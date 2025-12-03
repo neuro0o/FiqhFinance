@@ -1,5 +1,8 @@
 .content {
-  margin: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-right: 3rem;
+  margin-left: 270px; /* same as sidebar width */
   width: 90%;
 
   /* TODO: Remove Later */
@@ -110,6 +113,10 @@ svg {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .content {
+    margin-left: 3rem;
+  }
+
   .quick-actions {
     grid-template-columns: repeat(2, 1fr); /* tablet: 2 columns */
     gap: 3rem;
@@ -125,6 +132,10 @@ svg {
 }
 
 @media (max-width: 426px) {
+  .content {
+    margin-left: 3rem;
+  }
+
   .quick-actions {
     grid-template-columns: repeat(1, 1fr); /* mobile: 1 column */
     gap: 2rem;
