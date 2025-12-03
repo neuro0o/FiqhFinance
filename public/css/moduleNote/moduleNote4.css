@@ -1,0 +1,27 @@
+.note-content {
+  margin-left: 250px; /* same as sidebar width */
+}
+
+.minigameButton {
+    text-align: center; /* center child elements */
+    margin-top: 2rem; /*spacing from note content */
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .note-content {
+    margin-left: 0;
+  }
+
+  .btn-minigame {
+    width: 80%;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 426px) {
+  .note-content {
+    margin-left: 0;
+  }
+}
