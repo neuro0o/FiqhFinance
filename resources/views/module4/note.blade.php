@@ -24,7 +24,7 @@
         </h1>
 
         <div class="minigameButton">
-            <a href="{{ route('module4.minigame') }}">
+            <a href="{{ route('module4.quiz.start') }}">
                 <button class="btn btn-primary btn-minigame">Test Your Knowledge</button>
             </a>
         </div>
