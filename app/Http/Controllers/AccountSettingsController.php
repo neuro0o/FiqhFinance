@@ -1,11 +1,13 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use App\Models\User;
+use App\Models\Badge;
+use App\Models\BestScore;
 
 class AccountSettingsController extends Controller
 {
@@ -13,7 +15,46 @@ class AccountSettingsController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('user.account_settings', compact('user'));
+
+        // Get all badges with user's earned status
+        $allBadges = Badge::all();
+        $earnedBadgeIDs = $user->badges->pluck('badgeID')->toArray();
+        
+        $badges = $allBadges->map(function($badge) use ($earnedBadgeIDs, $user) {
+            $isEarned = in_array($badge->badgeID, $earnedBadgeIDs);
+            $earnedDate = null;
+            
+            if ($isEarned) {
+                $userBadge = $user->badges->where('badgeID', $badge->badgeID)->first();
+                $earnedDate = $userBadge->pivot->earned_at;
+            }
+            
+            return [
+                'badgeID' => $badge->badgeID,
+                'badgeName' => $badge->badgeName,
+                'badgeDesc' => $badge->badgeDesc,
+                'badgeIcon' => $badge->badgeIcon,
+                'isEarned' => $isEarned,
+                'earnedDate' => $earnedDate
+            ];
+        });
+
+        // Get best scores for all 6 modules
+        $bestScores = [];
+        for ($i = 1; $i <= 6; $i++) {
+            $score = BestScore::where('userID', $user->userID)
+                            ->where('moduleID', $i)
+                            ->first();
+            
+            $bestScores[$i] = [
+                'moduleID' => $i,
+                'bestScore' => $score ? $score->bestScore : null,
+                'scored_at' => $score ? $score->scored_at : null,
+                'hasAttempted' => $score !== null
+            ];
+        }
+
+        return view('user.account_settings', compact('user', 'badges', 'bestScores'));
     }
 
     // Update Profile Info (name, email, password, profile image)

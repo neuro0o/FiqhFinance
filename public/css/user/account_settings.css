@@ -325,6 +325,221 @@ input:checked + .slider:before {
   transform: translateX(21px);
 }
 
+/* ------------------ Achievements Card ------------------ */
+.achievements-card {
+  margin-top: 2rem;
+}
+
+.badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.badge-slot {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 3px solid transparent;
+}
+
+.badge-slot.earned {
+  border-color: rgba(34, 197, 94, 0.7);
+  background-color: var(--color-secondary);
+}
+
+.badge-slot.locked {
+  border-color: rgba(0, 0, 0, 0.7);
+  opacity: 0.7;
+}
+
+.badge-slot:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 8px rgba(0,0,0,0.5);
+}
+
+.badge-image-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+.badge-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+.badge-image.grayscale {
+  filter: grayscale(100%) brightness(0.2);
+}
+
+.lock-overlay {
+  fill: var(--color-primary);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.badge-info h4 {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.badge-desc {
+  font-size: var(--fs-sm);
+  color: var(--color-primary);
+  font-weight: var(--fw-regular);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.earned-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  font-size: var(--fs-xs);
+  color: #22c55e;
+  font-weight: var(--fw-semibold);
+}
+
+.locked-text {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+/* ------------------ Scores Card ------------------ */
+.scores-card {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.scores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.score-item {
+  background: var(--color-background);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 3px solid transparent;
+}
+
+.score-item.attempted {
+  border-color: rgba(34, 197, 94, 0.7);
+}
+
+.score-item.not-attempted {
+  border-color: rgba(0, 0, 0, 0.7);
+  opacity: 0.7;
+}
+
+.score-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 8px rgba(0,0,0,0.5);
+}
+
+.module-icon {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.module-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Make the icon a different color using filters */
+  filter: invert(33%) sepia(6%) saturate(4211%) hue-rotate(177deg) brightness(62%) contrast(87%);
+}
+
+.score-details {
+  flex: 1;
+  text-align: left;
+}
+
+.score-details span:hover {
+  background: transparent; /* remove any highlight on hover */
+  color: inherit; /* keep text color unchanged */
+}
+
+.score-details h4 {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.score-value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.score-number {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+}
+
+.score-total {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+}
+
+.score-date {
+  font-size: var(--fs-xs);
+  color: var(--color-primary);
+  font-weight: var(--fw-bold);
+  font-style: italic;
+  margin-top: 0.3rem;
+}
+
+.no-attempt {
+  font-size: var(--fs-sm);
+  color: var(--color-primary);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.start-btn {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: var(--color-primary);
+  color: var(--color-secondary);
+  border-radius: 0.5rem;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.start-btn:hover {
+  background: #1e40af;
+}
+
 /* ------------------ Animations ------------------ */
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -349,6 +564,14 @@ input:checked + .slider:before {
 
   .modal-content {
     width: 80%;
+  }
+
+  .badges-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scores-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -387,5 +610,19 @@ input:checked + .slider:before {
   .modal-content {
     width: 80%;
     padding: 1rem 1.5rem;
+  }
+
+  .badge-image-container {
+    width: 80px;
+    height: 80px;
+  }
+
+  .score-number {
+    font-size: 1.5rem;
+  }
+
+  .module-icon {
+    width: 50px;
+    height: 50px;
   }
 }

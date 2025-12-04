@@ -138,6 +138,11 @@
     padding: 0.5rem 1.5rem;
 }
 
+span:hover {
+  background: transparent; /* remove any highlight on hover */
+  color: inherit; /* keep text color unchanged */
+}
+
 .score-content h4 {
     font-size: var(--fs-lg);
     font-weight: var(--fw-bold);

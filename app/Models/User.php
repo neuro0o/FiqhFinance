@@ -32,6 +32,7 @@ class User extends Authenticatable
         'userName',
         'password',
         'profileImg',
+        'userRole',
     ];
 
     /**
@@ -57,18 +58,57 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Relationships
+     */
+    
+    // Module attempts relationship
     public function attempts()
     {
-        return $this->hasMany(ModuleAttempt::class);
+        return $this->hasMany(ModuleAttempt::class, 'userID', 'userID');
     }
 
+    // Best scores relationship
     public function bestScores()
     {
-        return $this->hasMany(BestScore::class);
+        return $this->hasMany(BestScore::class, 'userID', 'userID');
     }
 
+    // Badges relationship (many-to-many)
     public function badges()
     {
-        return $this->belongsToMany(Badge::class, 'user_badges');
+        return $this->belongsToMany(Badge::class, 'user_badges', 'userID', 'badgeID')
+                    ->withPivot('earned_at');
+    }
+
+    /**
+     * Helper methods
+     */
+    
+    // Check if user has earned a specific badge
+    public function hasBadge($badgeName)
+    {
+        return $this->badges()->where('badgeName', $badgeName)->exists();
+    }
+
+    // Get best score for a specific module
+    public function getBestScoreForModule($moduleID)
+    {
+        return $this->bestScores()
+                    ->where('moduleID', $moduleID)
+                    ->first();
+    }
+
+    // Get total number of earned badges
+    public function totalBadgesEarned()
+    {
+        return $this->badges()->count();
+    }
+
+    // Get average score across all modules
+    public function averageScore()
+    {
+        $scores = $this->bestScores()->pluck('bestScore');
+        return $scores->isEmpty() ? 0 : round($scores->avg(), 1);
     }
 }
