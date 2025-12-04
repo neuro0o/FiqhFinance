@@ -8,6 +8,7 @@ use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\Module1QuizController;
 use App\Http\Controllers\Module4QuizController;
 use App\Http\Controllers\Module6QuizController;
+use App\Http\Controllers\LeaderboardController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -153,6 +154,12 @@ Route::middleware(['auth'])->group(function () {
         \Log::info('Result from session:', ['result' => $result]);
         return view('module6.quiz.score', compact('result'));
     })->name('module6.score');
+});
+
+/*----------------- LEADERBOARD ROUTE -------------------*/
+Route::middleware(['auth'])->group(function () {
+    Route::get('/leaderboard', [LeaderboardController::class, 'index'])
+        ->name('leaderboard');
 });
 
 
