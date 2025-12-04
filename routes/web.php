@@ -7,6 +7,7 @@ use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\Module1QuizController;
 use App\Http\Controllers\Module4QuizController;
+use App\Http\Controllers\Module6QuizController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -121,6 +122,39 @@ Route::middleware(['auth'])->group(function () {
     })->name('module4.score');
 });
 
+/*----------------- MODULE 6 ROUTES -------------------*/
+Route::middleware(['auth'])->group(function () {
+    
+    // Module 6 Note Routes
+    Route::get('/module6/note', function () {
+        return view('module6.note');
+    })->name('module6.note');
+
+    // Module 6 Quiz Routes
+    Route::get('/module6/quiz', [Module6QuizController::class, 'start'])
+        ->name('module6.quiz.start');
+    
+    Route::get('/module6/quiz/{index}', [Module6QuizController::class, 'show'])
+        ->name('module6.quiz.show')
+        ->where('index', '[0-9]+'); // Add constraint
+    
+    Route::post('/module6/quiz/{index}/answer', [Module6QuizController::class, 'answer'])
+        ->name('module6.quiz.answer')
+        ->where('index', '[0-9]+'); // Add constraint
+    
+    // IMPORTANT: This must come AFTER the {index} route
+    Route::get('/module6/quiz/finish', [Module6QuizController::class, 'finish'])
+        ->name('module6.quiz.finish');
+
+    // Score display only (no processing)
+    Route::get('/module6/score', function () {
+        \Log::info('Score page accessed');
+        $result = session('module6_result');
+        \Log::info('Result from session:', ['result' => $result]);
+        return view('module6.quiz.score', compact('result'));
+    })->name('module6.score');
+});
+
 
 
 
@@ -140,10 +174,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/module5/note', function () {
         return view('module5.note');
     })->name('module5.note');
-
-    Route::get('/module6/note', function () {
-        return view('module6.note');
-    })->name('module6.note');
 });
 
 

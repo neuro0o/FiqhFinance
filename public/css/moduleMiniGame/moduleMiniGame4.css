@@ -146,11 +146,11 @@
 }
 
 .score-content p {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  font-size: var(--fs-md);
-  text-align:center;
-  color:#3A5987
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: var(--fs-md);
+    text-align:center;
+    color:#3A5987;
 }
 
 
