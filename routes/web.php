@@ -5,6 +5,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ModuleController;
+use App\Http\Controllers\Module1QuizController;
 use App\Http\Controllers\Module4QuizController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -17,7 +18,6 @@ Route::get('/', function () {
 });
 
 /*----------------- AUTH ROUTES -------------------*/
-
 // REGISTER
 Route::get('register', [RegistrationController::class, 'showForm'])
     ->name('register');
@@ -54,6 +54,40 @@ Route::get('/dashboard', function () {
     return view('user.dashboard');
 })->middleware('auth')->name('user.dashboard');
 
+
+/*----------------- MODULE 1 ROUTES -------------------*/
+Route::middleware(['auth'])->group(function () {
+    
+    // Module 1 Note Routes
+    Route::get('/module1/note', function () {
+        return view('module1.note');
+    })->name('module1.note');
+
+    // Module 1 Quiz Routes
+    Route::get('/module1/quiz', [Module1QuizController::class, 'start'])
+        ->name('module1.quiz.start');
+    
+    Route::get('/module1/quiz/{index}', [Module1QuizController::class, 'show'])
+        ->name('module1.quiz.show')
+        ->where('index', '[0-9]+'); // Add constraint
+    
+    Route::post('/module1/quiz/{index}/answer', [Module1QuizController::class, 'answer'])
+        ->name('module1.quiz.answer')
+        ->where('index', '[0-9]+'); // Add constraint
+    
+    // IMPORTANT: This must come AFTER the {index} route
+    Route::get('/module1/quiz/finish', [Module1QuizController::class, 'finish'])
+        ->name('module1.quiz.finish');
+
+    // Score display only (no processing)
+    Route::get('/module1/score', function () {
+        \Log::info('Score page accessed');
+        $result = session('module1_result');
+        \Log::info('Result from session:', ['result' => $result]);
+        return view('module1.quiz.score', compact('result'));
+    })->name('module1.score');
+});
+
 /*----------------- MODULE 4 ROUTES -------------------*/
 Route::middleware(['auth'])->group(function () {
     
@@ -87,14 +121,14 @@ Route::middleware(['auth'])->group(function () {
     })->name('module4.score');
 });
 
-// Middleware for authenticated users
+
+
+
+
+// Middleware for authenticated users (delete later)
 Route::middleware(['auth'])->group(function () {
 
     /*----------------- MODULE NOTE ROUTES -------------------*/
-    Route::get('/module1/note', function () {
-        return view('module1.note');
-    })->name('module1.note');
-
     Route::get('/module2/note', function () {
         return view('module2.note');
     })->name('module2.note');

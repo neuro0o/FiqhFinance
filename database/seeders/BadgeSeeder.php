@@ -15,9 +15,9 @@ class BadgeSeeder extends Seeder
     {
         DB::table('badges')->insert([
             [
-                'badgeName' => 'Islamic Finance Explorer',
+                'badgeName' => 'Islamic Financial Explorer',
                 'badgeDesc' => 'You got the basics down! Keep exploring to become a true Islamic Finance pro!',
-                'badgeIcon' => 'images/badges/islamic_finance_explorer.png',
+                'badgeIcon' => 'images/badges/islamic_financial_explorer.png',
                 'scoreThreshold' => 7,
             ],
             [
