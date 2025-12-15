@@ -42,7 +42,7 @@
                         @endif
                     </div>
                 @else
-                    <p class="no-badge">You didn't earn a badge this time.<br>Try to get at least <strong>4/5</strong> to earn <strong>Banking Ustaz</strong>!</p>
+                    <p class="no-badge">You didn't earn a badge this time.<br>Try to get at least <strong>6/10</strong> to earn <strong>Banking Ustaz</strong>!</p>
                 @endif
 
                 <!-- Results Section -->

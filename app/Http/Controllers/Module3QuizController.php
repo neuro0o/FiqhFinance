@@ -47,6 +47,9 @@ class Module3QuizController extends Controller
         'Wadiah'
     ];
 
+    private $marksPerQuestion = 2; // 2 marks per correct answer
+    private $totalMarks = 10; // 5 questions × 2 marks = 10 total marks
+
     public function start()
     {
         // Clear previous session
@@ -66,8 +69,8 @@ class Module3QuizController extends Controller
             return redirect()->route('module3.minigame')->with('error', 'Please answer all scenarios!');
         }
 
-        // Calculate score
-        $score = 0;
+        // Calculate score (2 marks per correct answer)
+        $correctCount = 0;
         $results = [];
 
         foreach ($this->scenarios as $scenario) {
@@ -75,7 +78,7 @@ class Module3QuizController extends Controller
             $isCorrect = $userAnswer === $scenario['answer'];
             
             if ($isCorrect) {
-                $score++;
+                $correctCount++;
             }
 
             $results[] = [
@@ -86,6 +89,9 @@ class Module3QuizController extends Controller
                 'isCorrect' => $isCorrect
             ];
         }
+
+        // Calculate total score (2 marks per correct answer)
+        $score = $correctCount * $this->marksPerQuestion;
 
         $userID = auth()->id();
         $moduleID = 3;
@@ -124,9 +130,9 @@ class Module3QuizController extends Controller
             $bestScoreValue = $bestScore->bestScore;
         }
 
-        // Check for badge eligibility (4/5 or higher)
+        // Check for badge eligibility (score > 5, at least three corrects)
         $badge = null;
-        if ($score >= 4) {
+        if ($score > 5) {
             $badgeData = Badge::where('badgeName', 'Banking Ustaz')->first();
             
             if ($badgeData) {
@@ -153,7 +159,9 @@ class Module3QuizController extends Controller
         // Store result in session
         session(['module3_result' => [
             'score' => $score,
-            'total' => count($this->scenarios),
+            'total' => $this->totalMarks,
+            'correctCount' => $correctCount,
+            'totalQuestions' => count($this->scenarios),
             'bestScore' => $bestScoreValue,
             'isNewBest' => $isNewBest,
             'badge' => $badge,

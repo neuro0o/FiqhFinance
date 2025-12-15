@@ -12,6 +12,7 @@ h1 svg {
   height: 1.2em;
   flex-shrink: 0;
   fill: var(--color-primary);
+  margin-left: 1.5rem;
 }
 
 .note-section h2,
