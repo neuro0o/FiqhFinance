@@ -1,3 +1,9 @@
+hr {
+  margin-bottom: 2.5rem;
+  border: 3px dashed var(--color-primary);
+  border-radius: 1rem;
+}
+
 /* -------------------- HEADINGS -------------------- */
 h1 {
   font-size: var(--fs-xl);
@@ -37,7 +43,7 @@ mark {
   margin-left: 250px;
 }
 
-.intro-note {
+.shariah-note {
   margin-top: 3rem;
   padding: 2rem;
   max-width: 100%;
@@ -262,7 +268,7 @@ mark {
     padding: 1rem;
   }
 
-  .intro-note {
+  .shariah-note {
     padding: 1rem;
   }
 

@@ -1,7 +1,23 @@
+hr {
+  margin-bottom: 5.5rem;
+  border: 3px dashed var(--color-primary);
+  border-radius: 1rem;
+}
+
 /* -------------------- HEADINGS -------------------- */
 h1 {
   font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem; /* spacing between text and icon */
+}
+
+h1 svg {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+  fill: var(--color-primary);
 }
 
 .note-section h2,
@@ -22,16 +38,29 @@ mark {
   border-radius: 2.5rem;
 }
 
+h2.planning-category {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--color-secondary);
+  line-height: 1.8;
+  letter-spacing: 1px;  
+  text-align: center;
+  background-color: var(--color-primary);
+  border-radius: 2.5rem;
+  border: 5px dotted var(--color-tertiary);
+}
+
 /* -------------------- NOTE CONTENT -------------------- */
 .note-content {
   margin-left: 250px;
 }
 
-.takaful-note {
+.planning-note {
   margin-top: 3rem;
   padding: 2rem;
   max-width: 100%;
 }
+
 
 /* -------------------- NOTE SECTIONS -------------------- */
 .note-section {
@@ -243,7 +272,8 @@ mark {
 @media (max-width: 768px) {
   h1 {
     font-size: var(--fs-lg);
-    text-align: center;
+    width: 100%;
+    justify-content: center;
   }
 
   .note-content {
@@ -251,7 +281,7 @@ mark {
     padding: 1rem;
   }
 
-  .takaful-note {
+  .planning-note {
     padding: 1rem;
   }
 
@@ -281,6 +311,11 @@ mark {
 @media (max-width: 426px) {
   h1 {
     font-size: var(--fs-md);
+  }
+
+  h1 svg {
+    width: 1em;
+    height: 1em;
   }
 
   .flip-grid {

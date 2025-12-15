@@ -1,3 +1,10 @@
+hr {
+  margin-bottom: 5.5rem;
+  border: 3px dashed var(--color-primary);
+  border-radius: 1rem;
+}
+
+
 /* -------------------- HEADINGS -------------------- */
 h1 {
   font-size: var(--fs-xl);
@@ -32,12 +39,25 @@ mark {
   border-radius: 2.5rem;
 }
 
+h2.investment-category {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  color: var(--color-secondary);
+  line-height: 1.8;
+  letter-spacing: 1px;  
+  text-align: center;
+  background-color: var(--color-primary);
+  border-radius: 2.5rem;
+  border: 5px dotted var(--color-tertiary);
+}
+
+
 /* -------------------- NOTE CONTENT -------------------- */
 .note-content {
   margin-left: 250px;
 }
 
-.intro-note {
+.investment-note {
   margin-top: 3rem;
   padding: 2rem;
   max-width: 100%;
@@ -262,7 +282,7 @@ mark {
     padding: 1rem;
   }
 
-  .intro-note {
+  .investment-note {
     padding: 1rem;
   }
 

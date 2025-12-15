@@ -2,6 +2,16 @@
 h1 {
   font-size: var(--fs-xl);
   font-weight: var(--fw-bold);
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem; /* spacing between text and icon */
+}
+
+h1 svg {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+  fill: var(--color-primary);
 }
 
 .note-section h2,
@@ -243,7 +253,8 @@ mark {
 @media (max-width: 768px) {
   h1 {
     font-size: var(--fs-lg);
-    text-align: center;
+    width: 100%;
+    justify-content: center;
   }
 
   .note-content {
@@ -281,6 +292,11 @@ mark {
 @media (max-width: 426px) {
   h1 {
     font-size: var(--fs-md);
+  }
+
+  h1 svg {
+    width: 1em;
+    height: 1em;
   }
 
   .flip-grid {
