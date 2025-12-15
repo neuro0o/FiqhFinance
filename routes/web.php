@@ -6,6 +6,7 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\Module1QuizController;
+use App\Http\Controllers\Module3QuizController;
 use App\Http\Controllers\Module4QuizController;
 use App\Http\Controllers\Module6QuizController;
 use App\Http\Controllers\LeaderboardController;
@@ -88,6 +89,24 @@ Route::middleware(['auth'])->group(function () {
         \Log::info('Result from session:', ['result' => $result]);
         return view('module1.quiz.score', compact('result'));
     })->name('module1.score');
+});
+
+
+/*----------------- MODULE 3 ROUTES -------------------*/
+Route::middleware(['auth'])->group(function () {
+
+    // Module 3 Note Routes
+    Route::get('/module3/note', function () {
+        return view('module3.note');
+    })->name('module3.note');
+
+    // Module 3 Mini-Game Routes
+    Route::get('/module3/minigame', [Module3QuizController::class, 'start'])
+        ->name('module3.minigame');
+    Route::post('/module3/minigame/submit', [Module3QuizController::class, 'submit'])
+        ->name('module3.minigame.submit');
+    Route::get('/module3/score', [Module3QuizController::class, 'score'])
+        ->name('module3.score');
 });
 
 /*----------------- MODULE 4 ROUTES -------------------*/
@@ -174,9 +193,7 @@ Route::middleware(['auth'])->group(function () {
         return view('module2.note');
     })->name('module2.note');
 
-    Route::get('/module3/note', function () {
-        return view('module3.note');
-    })->name('module3.note');
+    
 
     Route::get('/module5/note', function () {
         return view('module5.note');

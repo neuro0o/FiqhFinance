@@ -1,0 +1,299 @@
+/* -------------------- HEADINGS -------------------- */
+h1 {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+}
+
+.note-section h2,
+.flip-section h2,
+.advantage-section h2,
+.disadvantage-section h2 {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+mark {
+  color: var(--color-primary);
+  background-color: var(--color-tertiary);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  padding: 1.5rem 2.5rem;
+  border-radius: 2.5rem;
+}
+
+/* -------------------- NOTE CONTENT -------------------- */
+.note-content {
+  margin-left: 250px;
+}
+
+.takaful-note {
+  margin-top: 3rem;
+  padding: 2rem;
+  max-width: 100%;
+}
+
+/* -------------------- NOTE SECTIONS -------------------- */
+.note-section {
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: var(--color-tertiary);
+  border-radius: 2.5rem;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+.note-section ul,
+.note-section ol,
+.advantage-section ul,
+.advantage-section ol,
+.disadvantage-section ul,
+.disadvantage-section ol {
+  margin-left: 2rem;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-regular);
+  color: var(--color-primary);
+  line-height: 1.8;
+  letter-spacing: 1px;
+}
+
+.note-section li,
+.advantage-section li,
+.disadvantage-section li {
+  margin-bottom: 1rem;
+}
+
+/* -------------------- FLIP SECTION -------------------- */
+.flip-section {
+  margin-bottom: 4rem;
+  padding: 2rem;
+}
+
+/* GRID LAYOUT */
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-items: center; /* center cards */
+}
+
+/* -------------------- ADVANTAGE SECTION -------------------- */
+.advantage-section {
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: rgba(34, 197, 94, 0.5);
+  border-radius: 2.5rem;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+.disadvantage-section {
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: rgba(239, 68, 68, 0.5);
+  border-radius: 2.5rem;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* -------------------- FLIP CARD -------------------- */
+.flip-card {
+  width: 100%;
+  max-width: 320px;
+  height: 360px; /* SAME HEIGHT FOR ALL CARDS */
+  perspective: 1000px;
+  position: relative;
+  margin: 3rem;
+}
+
+/* Inner container */
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease-in-out;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front + Back Faces */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+/* FRONT */
+.flip-card-front {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+.flip-card-front p {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  text-align: center;
+  margin-top: 1.5rem;
+  line-height: 1.4;
+}
+
+/* BACK */
+.flip-card-back {
+  background-color: var(--color-tertiary);
+  color: var(--color-primary);
+  transform: rotateY(180deg);
+}
+
+.flip-card-back p {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.flip-card-back ul {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  list-style: none;
+  padding: 0; 
+  text-align: center;
+}
+
+.flip-card-back li {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
+  line-height: 1.6;
+  margin-bottom: 0.6rem;
+  text-align: start;
+}
+
+/* ICON */
+.card-icon {
+  width: 70px;
+  height: 70px;
+}
+
+.card-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--color-secondary);
+}
+
+
+/* -------------------- SPECIFIC -------------------- */
+.flip-grid-products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  justify-items: center; /* center cards */
+}
+
+/* -------------------- TABLES -------------------- */
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  text-align: center;
+  background: var(--color-secondary);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.compare-table th {
+  background: var(--color-primary);
+  color: var(--color-secondary);
+  padding: 1.25rem;
+  font-weight: var(--fw-bold);
+}
+
+.compare-table td {
+  padding: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.compare-table tr:last-child td {
+  border-bottom: none;
+}
+
+.compare-table tr:nth-child(even) {
+  background: var(--color-tertiary);
+}
+
+/* -------------------- MINI GAME BUTTON -------------------- */
+.minigameButton {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+@media (max-width: 768px) {
+  h1 {
+    font-size: var(--fs-lg);
+    text-align: center;
+  }
+
+  .note-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .takaful-note {
+    padding: 1rem;
+  }
+
+  .note-section,
+  .advantage-section,
+  .disadvantage-section {
+    padding: 1.5rem;
+  }
+
+  mark {
+    padding: 1rem 1.5rem;
+    font-size: var(--fs-md);
+  }
+
+  .flip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .flip-card {
+    width: 80%;
+    max-width: 300px;
+    margin: 3rem;
+  }
+
+}
+
+@media (max-width: 426px) {
+  h1 {
+    font-size: var(--fs-md);
+  }
+
+  .flip-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .flip-grid-products {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .flip-card {
+    margin: 2.5rem 0;
+  }
+}
+
+
