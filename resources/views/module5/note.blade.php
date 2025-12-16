@@ -267,7 +267,7 @@
         </div>
 
         <div class="minigameButton">
-            <a href="/minigame-scenario-module5">
+            <a href="{{ route('module5.minigame') }}">
                 <button class="btn btn-primary btn-minigame">Test Your Knowledge</button>
             </a>
         </div>

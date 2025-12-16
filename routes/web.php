@@ -8,6 +8,7 @@ use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\Module1QuizController;
 use App\Http\Controllers\Module3QuizController;
 use App\Http\Controllers\Module4QuizController;
+use App\Http\Controllers\Module5QuizController;
 use App\Http\Controllers\Module6QuizController;
 use App\Http\Controllers\LeaderboardController;
 use Illuminate\Support\Facades\Route;
@@ -142,6 +143,23 @@ Route::middleware(['auth'])->group(function () {
     })->name('module4.score');
 });
 
+/*----------------- MODULE 5 ROUTES -------------------*/
+Route::middleware(['auth'])->group(function () {
+
+    // Module 5 Note Routes
+    Route::get('/module5/note', function () {
+        return view('module5.note');
+    })->name('module5.note');
+
+    // Module 5 Mini-Game Routes
+    Route::get('/module5/minigame', [Module5QuizController::class, 'start'])
+        ->name('module5.minigame');
+    Route::post('/module5/minigame/submit', [Module5QuizController::class, 'submit'])
+        ->name('module5.minigame.submit');
+    Route::get('/module5/score', [Module5QuizController::class, 'score'])
+        ->name('module5.score');
+});
+
 /*----------------- MODULE 6 ROUTES -------------------*/
 Route::middleware(['auth'])->group(function () {
     
@@ -192,12 +210,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/module2/note', function () {
         return view('module2.note');
     })->name('module2.note');
-
-    
-
-    Route::get('/module5/note', function () {
-        return view('module5.note');
-    })->name('module5.note');
 });
 
 
