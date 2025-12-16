@@ -6,6 +6,7 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\AccountSettingsController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\Module1QuizController;
+use App\Http\Controllers\Module2QuizController;
 use App\Http\Controllers\Module3QuizController;
 use App\Http\Controllers\Module4QuizController;
 use App\Http\Controllers\Module5QuizController;
@@ -92,6 +93,22 @@ Route::middleware(['auth'])->group(function () {
     })->name('module1.score');
 });
 
+/*----------------- MODULE 2 ROUTES -------------------*/
+Route::middleware(['auth'])->group(function () {
+
+     // Module 2 Note Routes
+    Route::get('/module2/note', function () {
+        return view('module2.note');
+    })->name('module2.note');
+    
+    // Module 2 Drag & Drop Sorting Routes
+    Route::get('/module2/minigame', [Module2QuizController::class, 'start'])
+        ->name('module2.minigame');
+    Route::post('/module2/minigame/submit', [Module2QuizController::class, 'submit'])
+        ->name('module2.minigame.submit');
+    Route::get('/module2/score', [Module2QuizController::class, 'score'])
+        ->name('module2.score');
+});
 
 /*----------------- MODULE 3 ROUTES -------------------*/
 Route::middleware(['auth'])->group(function () {
@@ -198,19 +215,3 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/leaderboard', [LeaderboardController::class, 'index'])
         ->name('leaderboard');
 });
-
-
-
-
-
-// Middleware for authenticated users (delete later)
-Route::middleware(['auth'])->group(function () {
-
-    /*----------------- MODULE NOTE ROUTES -------------------*/
-    Route::get('/module2/note', function () {
-        return view('module2.note');
-    })->name('module2.note');
-});
-
-
-
