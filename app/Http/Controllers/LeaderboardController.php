@@ -30,7 +30,7 @@ class LeaderboardController extends Controller
                         'userName' => $user->userName,
                         'profileImg' => $user->profileImg,
                         'score' => $user->totalScore,
-                        'maxScore' => 50, // Total of all 6 modules
+                        'maxScore' => 60, // Total of all 6 modules
                         'scored_at' => $user->latestScoreDate
                     ];
                 });
